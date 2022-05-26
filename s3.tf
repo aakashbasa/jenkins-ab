@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "terraform-state" {
+resource "aws_s3_bucket_acl" "terraform-state" {
   bucket = "terraform-state-${random_string.random.result}"
   acl    = "private"
 
