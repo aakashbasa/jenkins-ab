@@ -65,3 +65,6 @@ resource "aws_instance" "app-instance" {
   key_name = data.aws_key_pair.jenkins.key_name
 }
 
+data "aws_key_pair" "jenkins" {
+  key_name = "mykeypair"
+}
