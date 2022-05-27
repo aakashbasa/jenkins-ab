@@ -4,9 +4,7 @@ language: bash
 
 # Export variables
 env:
-  - tf_version=0.14.0 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false" tf_apply_cli_options="-auto-approve -input=false"
-
-# Only build pushes to master branch
+  - tf_version=0.14.0 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false" tf_apply_cli_options="-auto-approve -input=false" backened_1="-backend-config="access_key=${TF_VAR_aws_access_key_id}""backened_2="-backend-config="secret_key=${TF_VAR_aws_secret_access_key}""# Only build pushes to master branch
 branches:
   only:
     - master
@@ -28,7 +26,7 @@ jobs:
       if: type IN (pull_request)
       script:
         - echo "Executing Terraform Plan on pull request code"
-        - terraform init $tf_init_cli_options
+        - terraform init $tf_init_cli_options $backened_1 $backened_2
         - terraform validate $tf_validation_cli_options
         - terraform plan $tf_plan_cli_options
     - stage: terraform apply
