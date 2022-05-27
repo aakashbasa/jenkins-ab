@@ -64,11 +64,3 @@ resource "aws_instance" "app-instance" {
   # the public SSH key
   key_name = "mykeypair"
 }
-
-terraform {
- backend "s3" {
-   bucket          = "terraform-state-lr60nw3l"
-   key             = "terraform.tfstate"
-   region          = "us-east-1"
- }
-}
